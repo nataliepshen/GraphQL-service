@@ -1,21 +1,21 @@
 import { RESTDataSource, RequestOptions } from "apollo-datasource-rest";
 
-export class AlbumAPI extends RESTDataSource {
+export class TrackAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = process.env.ALBUMS_URL;
+        this.baseURL = process.env.TRACKS_URL;
     }
 
     willSendRequest(request: RequestOptions) {
         request.headers.set('Authorization', `Bearer ${this.context.token}`);
     }
 
-    async getAlbums() {
+    async getTracks() {
         const data = await this.get('');
         return data.items;
     }
 
-    async getAlbumById(id: string) {
+    async getTrackById(id: string) {
         return await this.get(`/${id}`);
     }
 }

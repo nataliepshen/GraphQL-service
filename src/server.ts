@@ -1,15 +1,32 @@
 import { ApolloServer } from 'apollo-server';
-import { typeAlbums } from './modules/albums/schemas/album.schema';
-import { resolvers } from './modules/albums/resolvers/album.resolvers';
+import { typeDefs } from './graphql';
+import { resolvers } from './resolvers';
+import { ArtistAPI } from './modules/artists/services/artist.api';
+import { config } from "dotenv";
 import { AlbumAPI } from './modules/albums/services/album.api';
+import { BandAPI } from './modules/bands/services/band.api';
+import { GenreAPI } from './modules/genres/services/genre.api';
+import { TrackAPI } from './modules/tracks/services/track.api';
+import { UserAPI } from './modules/users/services/user.api';
+
+config();
 
 const server = new ApolloServer({
-    typeAlbums,
+    typeDefs,
     resolvers,
     dataSources: () => {
         return {
-            albumAPI: new AlbumAPI()
+            albumAPI: new AlbumAPI(),
+            artistAPI: new ArtistAPI(),
+            bandAPI: new BandAPI(),
+            genreAPI: new GenreAPI(),
+            trackAPI: new TrackAPI(),
+            userAPI: new UserAPI()
         }
+    },
+    context: ({ req }) => {
+        const token = req.headers.authorization || '';
+        return token;
     }
 });
 
