@@ -6,8 +6,8 @@ export class AlbumAPI extends RESTDataSource {
         this.baseURL = process.env.ALBUMS_URL;
     }
 
-    willSendRequest(request: RequestOptions) {
-        request.headers.set('Authorization', `Bearer ${this.context.token}`);
+    async willSendRequest(request: RequestOptions) {
+        request.headers.set('Authorization', `${this.context.token}`);
     }
 
     async getAlbums() {
@@ -17,5 +17,16 @@ export class AlbumAPI extends RESTDataSource {
 
     async getAlbumById(id: string) {
         return await this.get(`/${id}`);
+    }
+
+    async createAlbum(AlbumInput: any) {
+        return await this.post('/', AlbumInput);
+    }
+    async updateAlbum(id: string, AlbumInput: any) {
+        return await this.put(`/${id}`, AlbumInput);
+    }
+
+    async deleteAlbum(id: string) {
+        return await this.delete(`/${id}`);
     }
 }

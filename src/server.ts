@@ -14,6 +14,10 @@ config();
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    context: ({ req }) => {
+        const token = req.headers.authorization || '';
+        return { token };
+    },
     dataSources: () => {
         return {
             albumAPI: new AlbumAPI(),
@@ -23,10 +27,6 @@ const server = new ApolloServer({
             trackAPI: new TrackAPI(),
             userAPI: new UserAPI()
         }
-    },
-    context: ({ req }) => {
-        const token = req.headers.authorization || '';
-        return token;
     }
 });
 

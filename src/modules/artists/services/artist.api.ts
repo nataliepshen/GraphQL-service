@@ -7,7 +7,7 @@ export class ArtistAPI extends RESTDataSource {
     }
 
     willSendRequest(request: RequestOptions) {
-        request.headers.set('Authorization', `Bearer ${this.context.token}`);
+        request.headers.set('Authorization', `${this.context.token}`);
     }
 
     async getArtists() {
@@ -17,5 +17,16 @@ export class ArtistAPI extends RESTDataSource {
 
     async getArtistById(id: string) {
         return await this.get(`/${id}`);
+    }
+
+    async createArtist(ArtistInput: any) {
+        return await this.post('/', ArtistInput);
+    }
+    async updateArtist(id: string, ArtistInput: any) {
+        return await this.put(`/${id}`, ArtistInput);
+    }
+
+    async deleteArtist(id: string) {
+        return await this.delete(`/${id}`);
     }
 }

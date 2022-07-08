@@ -21,5 +21,16 @@ export const albumResolvers = {
         genres: async (album: any, _: undefined, { dataSources }: any) => {
             return await album.genresIds.map((item: any) => item = dataSources.genreAPI.getGenreById(item));
         }
+    },
+    Mutation: {
+        createAlbum: async (_: undefined, AlbumInput: any, { dataSources }: any) => {
+            return await dataSources.albumAPI.createAlbum(AlbumInput.content);
+        },
+        updateAlbum: async (_: undefined, { id, content }: { id: string, content: any}, { dataSources }: any) => {
+            return await dataSources.albumAPI.updateAlbum(id, content);
+        },
+        deleteAlbum: async (_: undefined, {id}: {id: string}, { dataSources }: any) => {
+            return await dataSources.albumAPI.deleteAlbum(id);
+        }
     }
 }

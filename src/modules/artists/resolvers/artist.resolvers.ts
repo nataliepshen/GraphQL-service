@@ -12,5 +12,16 @@ export const artistResolvers = {
         bands: async (artist: any, _: undefined, { dataSources }: any) => {
             return await artist.bandsIds.map((item: any) => item = dataSources.bandAPI.getBandById(item));
         }
+    },
+    Mutation: {
+        createArtist: async (_: undefined, ArtistInput: any, { dataSources }: any) => {
+            return await dataSources.artistAPI.createArtist(ArtistInput.content);
+        },
+        updateArtist: async (_: undefined, { id, content }: { id: string, content: any}, { dataSources }: any) => {
+            return await dataSources.artistAPI.updateArtist(id, content);
+        },
+        deleteArtist: async (_: undefined, {id}: {id: string}, { dataSources }: any) => {
+            return await dataSources.artistAPI.deleteArtist(id);
+        }
     }
 }

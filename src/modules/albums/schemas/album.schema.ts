@@ -17,4 +17,24 @@ type Album {
     genres: [Genre]
     image: String
 }
-`
+
+type Delete {
+    acknowledged: Boolean
+    deletedCount: Int
+}
+
+input AlbumInput {
+    name: String!
+    released: Int
+    artistsIds: [ID!]
+    bandsIds: [ID!]
+    trackIds: [ID!]
+    genresIds: [ID!]
+}
+
+type Mutation {
+    createAlbum(content: AlbumInput!): Album
+    updateAlbum(id: ID!, content: AlbumInput!): Album
+    deleteAlbum(id: ID!): Delete
+}
+`;

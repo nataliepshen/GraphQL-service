@@ -13,9 +13,7 @@ export const userResolvers = {
     },
     Mutation: {
         register: async (_: undefined, UserInput: any, {dataSources}: any) => {
-            const data = await dataSources.userAPI.registerUser(UserInput.content);
-            console.log(data);
-            return data;
+            return await dataSources.userAPI.registerUser(UserInput.content);
         }
     }
 }
