@@ -10,8 +10,11 @@ export class GenreAPI extends RESTDataSource {
         request.headers.set('Authorization', `${this.context.token}`);
     }
 
-    async getGenres() {
-        const data = await this.get('');
+    async getGenres(limit = 5, offset = 0) {
+        const data = await this.get('', {
+            "limit": limit,
+            "offset": offset
+        });
         return data.items;
     }
 

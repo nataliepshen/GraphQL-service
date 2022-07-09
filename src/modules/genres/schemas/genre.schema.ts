@@ -2,7 +2,7 @@ import { gql } from 'apollo-server';
 
 export const typeGenres = gql`
 extend type Query {
-    genres: [Genre]
+    genres(limit: Int, offset: Int): [Genre]
     genre(id: ID!): Genre
 }
 

@@ -10,8 +10,11 @@ export class ArtistAPI extends RESTDataSource {
         request.headers.set('Authorization', `${this.context.token}`);
     }
 
-    async getArtists() {
-        const data = await this.get('');
+    async getArtists(limit = 5, offset = 0) {
+        const data = await this.get('', {
+            "limit": limit,
+            "offset": offset
+        });
         return data.items;
     }
 
@@ -22,7 +25,7 @@ export class ArtistAPI extends RESTDataSource {
     async createArtist(ArtistInput: any) {
         return await this.post('/', ArtistInput);
     }
-    
+
     async updateArtist(id: string, ArtistInput: any) {
         return await this.put(`/${id}`, ArtistInput);
     }

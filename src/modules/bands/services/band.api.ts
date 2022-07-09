@@ -10,8 +10,11 @@ export class BandAPI extends RESTDataSource {
         request.headers.set('Authorization', `${this.context.token}`);
     }
 
-    async getBands() {
-        const data = await this.get('');
+    async getBands(limit = 5, offset = 0) {
+        const data = await this.get('', {
+            "limit": limit,
+            "offset": offset
+        });
         return data.items;
     }
 

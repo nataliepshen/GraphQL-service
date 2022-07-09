@@ -10,8 +10,11 @@ export class AlbumAPI extends RESTDataSource {
         request.headers.set('Authorization', `${this.context.token}`);
     }
 
-    async getAlbums() {
-        const data = await this.get('');
+    async getAlbums(limit = 5, offset = 0) {
+        const data = await this.get('', {
+            "limit": limit,
+            "offset": offset
+        });
         return data.items;
     }
 

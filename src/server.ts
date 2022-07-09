@@ -32,6 +32,6 @@ const server = new ApolloServer({
     }
 });
 
-server.listen(4000).then(() => {
+server.listen(process.env.PORT).then(() => {
     console.log('Server is running!');
 });
