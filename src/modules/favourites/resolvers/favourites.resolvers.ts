@@ -20,15 +20,17 @@ export const favouritesResolvers = {
         }
     },
     Mutation: {
-        addFavourites: async (_: undefined, FavouritesInput: any, { dataSources }: any) => {
-            console.log(FavouritesInput);
-            return await dataSources.favouritesAPI.addFavourites(FavouritesInput.content);
+        addArtistToFavourites: async (_: undefined, {id}: {id: string}, { dataSources }: any) => {
+            return await dataSources.favouritesAPI.addToFavourites('artists', id);
         },
-    //     updateAlbum: async (_: undefined, { id, content }: { id: string, content: any}, { dataSources }: any) => {
-    //         return await dataSources.albumAPI.updateAlbum(id, content);
-    //     },
-    //     deleteAlbum: async (_: undefined, {id}: {id: string}, { dataSources }: any) => {
-    //         return await dataSources.albumAPI.deleteAlbum(id);
-    //     }
+        addBandToFavourites: async (_: undefined, {id}: {id: string}, { dataSources }: any) => {
+            return await dataSources.favouritesAPI.addToFavourites('bands', id);
+        },
+        addGenreToFavourites: async (_: undefined, {id}: {id: string}, { dataSources }: any) => {
+            return await dataSources.favouritesAPI.addToFavourites('genres', id);
+        },
+        addTrackToFavourites: async (_: undefined, {id}: {id: string}, { dataSources }: any) => {
+            return await dataSources.favouritesAPI.addToFavourites('tracks', id);
+        }
     }
 }

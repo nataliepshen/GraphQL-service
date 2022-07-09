@@ -12,14 +12,10 @@ export class FavouritesAPI extends RESTDataSource {
 
     async getFavourites() {
         const data = await this.get('');
-        return data.items;
+        return data;
     }
 
-    async addFavourites(FavouritesInput: any) {
-        return await this.put('/add', FavouritesInput);
+    async addToFavourites(type: string, id: string) {
+        return await this.put('/add', {type, id});
     }
-
-    // async deleteArtist(id: string) {
-    //     return await this.delete(`/${id}`);
-    // }
 }

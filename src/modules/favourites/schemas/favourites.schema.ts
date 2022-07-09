@@ -14,12 +14,10 @@ type Favourites {
     tracks: [Track]
 }
 
-input FavouritesInput {
-    type: String
-    id: String
-}
-
 type Mutation {
-    addFavourites(content: FavouritesInput!): Favourites
+    addArtistToFavourites(id: ID!): Favourites
+    addBandToFavourites(id: ID!): Favourites
+    addGenreToFavourites(id: ID!): Favourites
+    addTrackToFavourites(id: ID!): Favourites
 }
 `;
