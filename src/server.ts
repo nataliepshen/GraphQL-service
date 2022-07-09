@@ -8,6 +8,7 @@ import { BandAPI } from './modules/bands/services/band.api';
 import { GenreAPI } from './modules/genres/services/genre.api';
 import { TrackAPI } from './modules/tracks/services/track.api';
 import { UserAPI } from './modules/users/services/user.api';
+import { FavouritesAPI } from './modules/favourites/services/favourites.api';
 
 config();
 
@@ -25,7 +26,8 @@ const server = new ApolloServer({
             bandAPI: new BandAPI(),
             genreAPI: new GenreAPI(),
             trackAPI: new TrackAPI(),
-            userAPI: new UserAPI()
+            userAPI: new UserAPI(),
+            favouritesAPI: new FavouritesAPI()
         }
     }
 });

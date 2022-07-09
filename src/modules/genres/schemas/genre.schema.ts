@@ -11,6 +11,24 @@ type Genre {
     name: String!
     description: String
     country: String
-    year: String
+    year: Int
 }
-`
+
+type Delete {
+    acknowledged: Boolean
+    deletedCount: Int
+}
+
+input GenreInput {
+    name: String!
+    description: String
+    country: String
+    year: Int
+}
+
+type Mutation {
+    createGenre(content: GenreInput!): Genre
+    updateGenre(id: ID!, content: GenreInput!): Genre
+    deleteGenre(id: ID!): Delete
+}
+`;

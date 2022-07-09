@@ -7,7 +7,7 @@ export class BandAPI extends RESTDataSource {
     }
 
     willSendRequest(request: RequestOptions) {
-        request.headers.set('Authorization', `Bearer ${this.context.token}`);
+        request.headers.set('Authorization', `${this.context.token}`);
     }
 
     async getBands() {
@@ -17,5 +17,17 @@ export class BandAPI extends RESTDataSource {
 
     async getBandById(id: string) {
         return await this.get(`/${id}`);
+    }
+
+    async createBand(BandInput: any) {
+        return await this.post('/', BandInput);
+    }
+
+    async updateBand(id: string, BandInput: any) {
+        return await this.put(`/${id}`, BandInput);
+    }
+
+    async deleteBand(id: string) {
+        return await this.delete(`/${id}`);
     }
 }

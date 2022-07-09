@@ -15,4 +15,5 @@ export const typeDefs = gql`
     ${typeGenres}
     ${typeTracks}
     ${typeUsers}
+    ${typeFavourites}
 `;

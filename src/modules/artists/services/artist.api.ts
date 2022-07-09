@@ -22,6 +22,7 @@ export class ArtistAPI extends RESTDataSource {
     async createArtist(ArtistInput: any) {
         return await this.post('/', ArtistInput);
     }
+    
     async updateArtist(id: string, ArtistInput: any) {
         return await this.put(`/${id}`, ArtistInput);
     }

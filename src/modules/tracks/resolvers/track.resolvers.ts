@@ -21,5 +21,16 @@ export const trackResolvers = {
         album: async (track: any, _: undefined, { dataSources }: any) => {
             return track.albumId = await dataSources.albumAPI.getAlbumById(track.albumId);
         }
+    },
+    Mutation: {
+        createTrack: async (_: undefined, TrackInput: any, { dataSources }: any) => {
+            return await dataSources.trackAPI.createTrack(TrackInput.content);
+        },
+        updateTrack: async (_: undefined, { id, content }: { id: string, content: any}, { dataSources }: any) => {
+            return await dataSources.trackAPI.updateTrack(id, content);
+        },
+        deleteTrack: async (_: undefined, {id}: {id: string}, { dataSources }: any) => {
+            return await dataSources.trackAPI.deleteTrack(id);
+        }
     }
 }

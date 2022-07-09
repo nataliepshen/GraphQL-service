@@ -7,7 +7,7 @@ export class TrackAPI extends RESTDataSource {
     }
 
     willSendRequest(request: RequestOptions) {
-        request.headers.set('Authorization', `Bearer ${this.context.token}`);
+        request.headers.set('Authorization', `${this.context.token}`);
     }
 
     async getTracks() {
@@ -17,5 +17,17 @@ export class TrackAPI extends RESTDataSource {
 
     async getTrackById(id: string) {
         return await this.get(`/${id}`);
+    }
+
+    async createTrack(TrackInput: any) {
+        return await this.post('/', TrackInput);
+    }
+    
+    async updateTrack(id: string, TrackInput: any) {
+        return await this.put(`/${id}`, TrackInput);
+    }
+
+    async deleteTrack(id: string) {
+        return await this.delete(`/${id}`);
     }
 }

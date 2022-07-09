@@ -1,6 +1,7 @@
 import { albumResolvers } from "./modules/albums/resolvers/album.resolvers";
 import { artistResolvers } from "./modules/artists/resolvers/artist.resolvers";
 import { bandResolvers } from "./modules/bands/resolvers/band.resolvers";
+import { favouritesResolvers } from "./modules/favourites/resolvers/favourites.resolvers";
 import { genresResolvers } from "./modules/genres/resolvers/genre.resolvers";
 import { trackResolvers } from "./modules/tracks/resolvers/track.resolvers";
 import { userResolvers } from "./modules/users/resolvers/user.resolvers";
@@ -12,5 +13,6 @@ export const resolvers = [
     bandResolvers,
     genresResolvers,
     trackResolvers,
-    userResolvers
+    userResolvers,
+    favouritesResolvers
 ];
