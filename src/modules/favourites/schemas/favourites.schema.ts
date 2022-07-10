@@ -14,7 +14,7 @@ type Favourites {
     tracks: [Track]
 }
 
-type Mutation {
+extend type Mutation {
     addArtistToFavourites(id: ID!): Favourites
     addBandToFavourites(id: ID!): Favourites
     addGenreToFavourites(id: ID!): Favourites

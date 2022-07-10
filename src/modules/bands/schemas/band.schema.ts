@@ -43,7 +43,7 @@ input MemberInput {
     years: [String]
 }
 
-type Mutation {
+extend type Mutation {
     createBand(content: BandInput!): Band
     updateBand(id: ID!, content: BandInput!): Band
     deleteBand(id: ID!): Delete

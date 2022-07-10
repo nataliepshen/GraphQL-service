@@ -25,7 +25,7 @@ input UserInput {
     email: String!
 }
 
-type Mutation {
+extend type Mutation {
     register(content: UserInput!): User
 }
 `;

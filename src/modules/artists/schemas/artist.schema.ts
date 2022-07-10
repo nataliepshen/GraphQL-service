@@ -34,7 +34,7 @@ input ArtistInput {
     instruments: [String]
 }
 
-type Mutation {
+extend type Mutation {
     createArtist(content: ArtistInput!): Artist
     updateArtist(id: ID!, content: ArtistInput!): Artist
     deleteArtist(id: ID!): Delete

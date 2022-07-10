@@ -26,7 +26,7 @@ input GenreInput {
     year: Int
 }
 
-type Mutation {
+extend type Mutation {
     createGenre(content: GenreInput!): Genre
     updateGenre(id: ID!, content: GenreInput!): Genre
     deleteGenre(id: ID!): Delete

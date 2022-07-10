@@ -32,7 +32,7 @@ input TrackInput {
     genresIds: [ID!]
 }
 
-type Mutation {
+extend type Mutation {
     createTrack(content: TrackInput!): Track
     updateTrack(id: ID!, content: TrackInput!): Track
     deleteTrack(id: ID!): Delete
